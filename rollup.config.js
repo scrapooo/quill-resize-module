@@ -7,7 +7,7 @@ export default [
   {
     input: "src/main.ts",
     output: {
-      name: "quill-resize-module",
+      name: "QuillResizeModule",
       file: "dist/quill-resize-module.js",
       format: "umd"
     },
@@ -16,7 +16,7 @@ export default [
   {
     input: "src/main.ts",
     output: {
-      name: "quill-resize-module",
+      name: "QuillResizeModule",
       file: "dist/quill-resize-module.min.js",
       format: "umd"
     },

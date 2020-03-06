@@ -19,7 +19,7 @@ class I18n {
 }
 
 const defaultLocale: Locale = {
-  altTip: "按照alt键比例缩放",
+  altTip: "按住alt键比例缩放",
   floatLeft: "靠左",
   floatRight: "靠右",
   center: "居中",

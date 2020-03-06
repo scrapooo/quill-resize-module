@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global['quill-resize-module'] = factory());
+    (global = global || self, global.QuillResizeModule = factory());
 }(this, (function () { 'use strict';
 
     function __$styleInject(css) {
@@ -77,7 +77,6 @@
         center: "居中",
         restore: "还原"
     };
-    //# sourceMappingURL=i18n.js.map
 
     function format(str) {
         var values = [];
@@ -93,7 +92,6 @@
             }
         });
     }
-    //# sourceMappingURL=utils.js.map
 
     var ResizeElement = /** @class */ (function (_super) {
         __extends(ResizeElement, _super);
@@ -238,7 +236,6 @@
         };
         return ResizePlugin;
     }());
-    //# sourceMappingURL=ResizePlugin.js.map
 
     var Iframe = /** @class */ (function () {
         function Iframe(element, cb) {
@@ -280,7 +277,6 @@
         IframeClick.interval = null;
         return IframeClick;
     }());
-    //# sourceMappingURL=IframeClick.js.map
 
     function QuillResizeModule(quill, options) {
         var container = quill.root;
@@ -313,7 +309,6 @@
             }
         }, { capture: true });
     }
-    //# sourceMappingURL=main.js.map
 
     return QuillResizeModule;
 
