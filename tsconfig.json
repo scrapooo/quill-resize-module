@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": ["ES2015", "ES2016", "ES2017", "DOM"],
+    "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,31 @@
+import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import typescript from "rollup-plugin-typescript";
+import { uglify } from "rollup-plugin-uglify";
+import less from "rollup-plugin-less";
+export default [
+  {
+    input: "src/main.ts",
+    output: {
+      name: "quill-resize-module",
+      file: "dist/quill-resize-module.js",
+      format: "umd"
+    },
+    plugins: [resolve(), commonjs(), typescript(), less({ insert: true })]
+  },
+  {
+    input: "src/main.ts",
+    output: {
+      name: "quill-resize-module",
+      file: "dist/quill-resize-module.min.js",
+      format: "umd"
+    },
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript(),
+      uglify(),
+      less({ insert: true })
+    ]
+  }
+];
