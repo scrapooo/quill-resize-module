@@ -7,15 +7,17 @@ a module that enables resize for image/iframe/video.
 
 ## Demo
 
-![image](https://github.com/1002237913/quill-resize-module/raw/master/demo/demo.jpg)
+![image](https://raw.githubusercontent.com/1002237913/quill-resize-module/master/demo/demo.gif)
 
 ## Usage
 
 ### Webpack/ES6
 
+`npm install @1002237913/quill-resize-module`
+
 ```javascript
 import Quill from "quill";
-import ResizeModule from "quill-resize-module";
+import ResizeModule from "@1002237913/quill-resize-module";
 
 Quill.register("modules/resize", ResizeModule);
 
