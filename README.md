@@ -2,12 +2,12 @@
 
 A module for Quill rich text editor to allow images to be resized.
 
-Also see [quill-resize-module](https://github.com/1002237913/quill-resize-module),
+Also see [quill-resize-module](https://github.com/scrapooo/quill-resize-module),
 a module that enables resize for image/iframe/video.
 
 ## Demo
 
-![image](https://raw.githubusercontent.com/1002237913/quill-resize-module/master/demo/demo.gif)
+![image](https://raw.githubusercontent.com/scrapooo/quill-resize-module/master/demo/demo.gif)
 
 ## Usage
 
