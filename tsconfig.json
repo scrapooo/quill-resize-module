@@ -7,7 +7,8 @@
     "lib": ["ES2015", "ES2016", "ES2017", "DOM"],
     "declaration": true,
     "declarationDir": "./types",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "sourceMap": false
   },
   "include": ["src/**/*"]
 }

@@ -12,8 +12,7 @@
     />
     <script
       crossorigin="anonymous"
-      integrity="sha384-MDio1/ps0nK1tabxUqZ+1w2NM9faPltR1mDqXcNleeuiSi0KBXqIsWofIp4r5A0+"
-      src="http://lib.baomitu.com/quill/2.0.0-dev.3/quill.min.js"
+      src="http://lib.baomitu.com/quill/2.0.0-dev.3/quill.js"
     ></script>
     <script src="../dist/quill-resize-module.js"></script>
   </head>
@@ -23,6 +22,8 @@
       <p>Some initial <strong>bold</strong> text</p>
       <p><br /></p>
     </div>
+
+    <div id="prev"></div>
   </body>
   <script>
     Quill.register("modules/resize", window.QuillResizeModule);
@@ -33,16 +34,20 @@
       "underline",
       "strike",
       "image",
-      "video"
+      "video",
     ];
     var quill = new Quill("#editor", {
       theme: "snow",
       modules: {
         toolbar: toolbarOptions,
         resize: {
-          locale: {}
-        }
-      }
+          locale: {},
+        },
+      },
+    });
+
+    quill.on("text-change", (a, b, c) => {
+      document.getElementById("prev").innerHTML = quill.getSemanticHTML();
     });
   </script>
 </html>

@@ -18,6 +18,7 @@ class ResizeElement extends HTMLElement {
 
 interface ResizePluginOption {
   locale?: Locale;
+  [index: string]: any;
 }
 const template = `
 <div class="handler" title="{0}"></div>
@@ -45,6 +46,7 @@ class ResizePlugin {
   container: HTMLElement;
   startResizePosition: Position | null = null;
   i18n: I18n;
+  options: any;
 
   constructor(
     resizeTarget: ResizeElement,
@@ -52,12 +54,12 @@ class ResizePlugin {
     options?: ResizePluginOption
   ) {
     this.i18n = new I18n(options?.locale || defaultLocale);
-
+    this.options = options;
     this.resizeTarget = resizeTarget;
     if (!resizeTarget.originSize) {
       resizeTarget.originSize = {
         width: resizeTarget.clientWidth,
-        height: resizeTarget.clientHeight
+        height: resizeTarget.clientHeight,
       };
     }
 
@@ -73,9 +75,8 @@ class ResizePlugin {
   }
 
   initResizer() {
-    let resizer: HTMLElement | null = this.container.querySelector(
-      "#editor-resizer"
-    );
+    let resizer: HTMLElement | null =
+      this.container.querySelector("#editor-resizer");
     if (!resizer) {
       resizer = document.createElement("div");
       resizer.setAttribute("id", "editor-resizer");
@@ -113,7 +114,7 @@ class ResizePlugin {
       target.classList.contains("btn") ||
       target.classList.contains("inner-btn")
     ) {
-      const width: string = target.dataset.width as string;
+      let width: any = target.dataset.width as string;
       const float: string = target.dataset.float as string;
       const style: CSSStyleDeclaration = this.resizeTarget.style;
       if (width) {
@@ -148,6 +149,8 @@ class ResizePlugin {
         }
       }
       this.positionResizerToTarget(this.resizeTarget);
+
+      this.options?.onChange(this.resizeTarget);
     }
   }
   startResize(e: MouseEvent) {
@@ -157,12 +160,13 @@ class ResizePlugin {
         left: e.clientX,
         top: e.clientY,
         width: this.resizeTarget.clientWidth,
-        height: this.resizeTarget.clientHeight
+        height: this.resizeTarget.clientHeight,
       };
     }
   }
   endResize() {
     this.startResizePosition = null;
+    this.options?.onChange(this.resizeTarget);
   }
   resizing(e: MouseEvent) {
     if (!this.startResizePosition) return;

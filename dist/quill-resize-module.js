@@ -71,7 +71,7 @@
         return I18n;
     }());
     var defaultLocale = {
-        altTip: "按照alt键比例缩放",
+        altTip: "按住alt键比例缩放",
         floatLeft: "靠左",
         floatRight: "靠右",
         center: "居中",
@@ -108,11 +108,12 @@
             this.resizer = null;
             this.startResizePosition = null;
             this.i18n = new I18n((options === null || options === void 0 ? void 0 : options.locale) || defaultLocale);
+            this.options = options;
             this.resizeTarget = resizeTarget;
             if (!resizeTarget.originSize) {
                 resizeTarget.originSize = {
                     width: resizeTarget.clientWidth,
-                    height: resizeTarget.clientHeight
+                    height: resizeTarget.clientHeight,
                 };
             }
             this.container = container;
@@ -151,6 +152,7 @@
             window.addEventListener("mousemove", this.resizing);
         };
         ResizePlugin.prototype.toolbarClick = function (e) {
+            var _a;
             var target = e.target;
             if (target.classList.contains("btn") ||
                 target.classList.contains("inner-btn")) {
@@ -194,6 +196,7 @@
                     }
                 }
                 this.positionResizerToTarget(this.resizeTarget);
+                (_a = this.options) === null || _a === void 0 ? void 0 : _a.onChange(this.resizeTarget);
             }
         };
         ResizePlugin.prototype.startResize = function (e) {
@@ -203,12 +206,14 @@
                     left: e.clientX,
                     top: e.clientY,
                     width: this.resizeTarget.clientWidth,
-                    height: this.resizeTarget.clientHeight
+                    height: this.resizeTarget.clientHeight,
                 };
             }
         };
         ResizePlugin.prototype.endResize = function () {
+            var _a;
             this.startResizePosition = null;
+            (_a = this.options) === null || _a === void 0 ? void 0 : _a.onChange(this.resizeTarget);
         };
         ResizePlugin.prototype.resizing = function (e) {
             if (!this.startResizePosition)
@@ -282,11 +287,16 @@
         var container = quill.root;
         var resizeTarge;
         var resizePlugin;
+        function triggerTextChange() {
+            var Delta = quill.getContents().constructor;
+            var delta = new Delta().retain(1);
+            quill.updateContents(delta);
+        }
         container.addEventListener("click", function (e) {
             var target = e.target;
             if (e.target && ["img", "video"].includes(target.tagName.toLowerCase())) {
                 resizeTarge = target;
-                resizePlugin = new ResizePlugin(target, container.parentElement, options);
+                resizePlugin = new ResizePlugin(target, container.parentElement, __assign(__assign({}, options), { onChange: triggerTextChange }));
             }
         });
         quill.on("text-change", function (delta, source) {
@@ -294,7 +304,7 @@
             container.querySelectorAll("iframe").forEach(function (item) {
                 IframeClick.track(item, function () {
                     resizeTarge = item;
-                    resizePlugin = new ResizePlugin(item, container.parentElement, options);
+                    resizePlugin = new ResizePlugin(item, container.parentElement, __assign(__assign({}, options), { onChange: triggerTextChange }));
                 });
             });
         });

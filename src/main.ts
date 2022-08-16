@@ -6,6 +6,8 @@ interface Quill {
   container: HTMLElement;
   root: HTMLElement; // edit area
   on: any;
+  updateContents: (delta: any) => void;
+  getContents: () => any;
 }
 interface QuillResizeModuleOptions {
   [index: string]: any;
@@ -16,6 +18,13 @@ function QuillResizeModule(quill: Quill, options?: QuillResizeModuleOptions) {
   const container: HTMLElement = quill.root as HTMLElement;
   let resizeTarge: HTMLElement | null;
   let resizePlugin: ResizePlugin | null;
+
+  function triggerTextChange() {
+    const Delta = quill.getContents().constructor;
+    const delta = new Delta().retain(1);
+    quill.updateContents(delta);
+  }
+
   container.addEventListener("click", (e: Event) => {
     const target: HTMLElement = e.target as HTMLElement;
     if (e.target && ["img", "video"].includes(target.tagName.toLowerCase())) {
@@ -23,7 +32,10 @@ function QuillResizeModule(quill: Quill, options?: QuillResizeModuleOptions) {
       resizePlugin = new ResizePlugin(
         target,
         container.parentElement as HTMLElement,
-        options
+        {
+          ...options,
+          onChange: triggerTextChange,
+        }
       );
     }
   });
@@ -36,7 +48,10 @@ function QuillResizeModule(quill: Quill, options?: QuillResizeModuleOptions) {
         resizePlugin = new ResizePlugin(
           item,
           container.parentElement as HTMLElement,
-          options
+          {
+            ...options,
+            onChange: triggerTextChange,
+          }
         );
       });
     });
