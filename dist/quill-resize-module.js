@@ -173,12 +173,10 @@
                         var styleWidth = style.getPropertyValue("width");
                         width = parseInt(width);
                         if (styleWidth.includes("%")) {
-                            styleWidth =
-                                Math.min(Math.max(parseInt(styleWidth) + width, 5), 100) + "%";
+                            styleWidth = Math.min(Math.max(parseInt(styleWidth) + width, 5), 100) + "%";
                         }
                         else {
-                            styleWidth =
-                                Math.max(this.resizeTarget.clientWidth + width, 10) + "px";
+                            styleWidth = Math.max(this.resizeTarget.clientWidth + width, 10) + "px";
                         }
                         style.setProperty("width", styleWidth);
                     }
@@ -224,7 +222,7 @@
             var height = this.startResizePosition.height;
             width += deltaX;
             height += deltaY;
-            if (e.altKey) {
+            if (e.altKey || this.options.ratioLock) {
                 var originSize = this.resizeTarget.originSize;
                 var rate = originSize.height / originSize.width;
                 height = rate * width;
