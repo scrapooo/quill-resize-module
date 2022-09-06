@@ -11,7 +11,7 @@ export default [
       file: "dist/quill-resize-module.js",
       format: "umd"
     },
-    plugins: [resolve(), commonjs(), typescript(), less({ insert: true })]
+    plugins: [resolve(), commonjs(), typescript(), less({ insert: false })]
   },
   {
     input: "src/main.ts",
@@ -25,7 +25,7 @@ export default [
       commonjs(),
       typescript(),
       uglify(),
-      less({ insert: true })
+      less({ insert: false })
     ]
   }
 ];
