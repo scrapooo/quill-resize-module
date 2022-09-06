@@ -25,45 +25,45 @@ const template = `
 <div class="handler" title="{0}"></div>
 <div class="toolbar">
   <div class="btn-group">
-    <a class="btn btn-white app-toolbar-control" data-width="100%">100%</a>
-    <a class="btn btn-white app-toolbar-control" data-width="50%">50%</a>
-    <a class="btn btn-white btn-icon app-toolbar-control" data-width="-5" class="btn btn-white btn-icon inner-btn">
+    <button type="button" class="btn btn-white app-toolbar-control" data-width="100%">100%</button>
+    <button type="button" class="btn btn-white app-toolbar-control" data-width="50%">50%</button>
+    <button type="button" class="btn btn-white btn-icon app-toolbar-control" data-width="-5" class="btn btn-white btn-icon inner-btn">
          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
-    </a>
-    <a class="btn btn-white btn-icon app-toolbar-control" data-width="5" class="btn btn-white btn-icon inner-btn">
+    </button>
+    <button type="button" class="btn btn-white btn-icon app-toolbar-control" data-width="5" class="btn btn-white btn-icon inner-btn">
          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="12" y1="5" x2="12" y2="19"></line>
            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
-    </a>
-    <a class="btn btn-white btn-icon app-toolbar-control" data-float="left">
+    </button>
+    <button type="button" class="btn btn-white btn-icon app-toolbar-control" data-float="left">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
          <line x1="4" y1="6" x2="20" y2="6"></line>
          <line x1="4" y1="12" x2="14" y2="12"></line>
          <line x1="4" y1="18" x2="18" y2="18"></line>
       </svg>
-    </a>
-    <a class="btn btn-white btn-icon app-toolbar-control" data-float="center">
+    </button>
+    <button type="button" class="btn btn-white btn-icon app-toolbar-control" data-float="center">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-center" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="4" y1="6" x2="20" y2="6"></line>
            <line x1="8" y1="12" x2="16" y2="12"></line>
            <line x1="6" y1="18" x2="18" y2="18"></line>
         </svg>    
-    </a>
-    <a class="btn btn-white btn-icon app-toolbar-control" data-float="right">
+    </button>
+    <button type="button" class="btn btn-white btn-icon app-toolbar-control" data-float="right">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="4" y1="6" x2="20" y2="6"></line>
            <line x1="10" y1="12" x2="20" y2="12"></line>
            <line x1="6" y1="18" x2="20" y2="18"></line>
         </svg>
-    </a>
+    </button>
   </div>
 </div>
 `;
