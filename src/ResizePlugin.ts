@@ -25,22 +25,22 @@ const template = `
 <div class="handler" title="{0}"></div>
 <div class="toolbar">
   <div class="btn-group">
-    <a class="btn btn-white" data-width="100%">100%</a>
-    <a class="btn btn-white" data-width="50%">50%</a>
-    <a class="btn btn-white btn-icon"data-width="-5" class="btn btn-white btn-icon inner-btn">
+    <a class="btn btn-white app-toolbar-control" data-width="100%">100%</a>
+    <a class="btn btn-white app-toolbar-control" data-width="50%">50%</a>
+    <a class="btn btn-white btn-icon app-toolbar-control" data-width="-5" class="btn btn-white btn-icon inner-btn">
          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
     </a>
-    <a class="btn btn-white btn-icon"ata-width="5" class="btn btn-white btn-icon inner-btn">
+    <a class="btn btn-white btn-icon app-toolbar-control" data-width="5" class="btn btn-white btn-icon inner-btn">
          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="12" y1="5" x2="12" y2="19"></line>
            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
     </a>
-    <a class="btn btn-white btn-icon" data-float="left">
+    <a class="btn btn-white btn-icon app-toolbar-control" data-float="left">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
          <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -48,7 +48,7 @@ const template = `
          <line x1="4" y1="18" x2="18" y2="18"></line>
       </svg>
     </a>
-    <a class="btn btn-white btn-icon" data-float="center">
+    <a class="btn btn-white btn-icon app-toolbar-control" data-float="center">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-center" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -56,20 +56,13 @@ const template = `
            <line x1="6" y1="18" x2="18" y2="18"></line>
         </svg>    
     </a>
-    <a class="btn btn-white btn-icon" data-float="right">
+    <a class="btn btn-white btn-icon app-toolbar-control" data-float="right">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
            <line x1="4" y1="6" x2="20" y2="6"></line>
            <line x1="10" y1="12" x2="20" y2="12"></line>
            <line x1="6" y1="18" x2="20" y2="18"></line>
         </svg>
-    </a>
-    <a data-float="none" class="btn btn-white btn-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-           <line x1="18" y1="6" x2="6" y2="18"></line>
-           <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>    
     </a>
   </div>
 </div>
@@ -144,12 +137,10 @@ class ResizePlugin {
   }
   toolbarClick(e: MouseEvent) {
     const target: HTMLElement = e.target as HTMLElement;
-    if (
-      target.classList.contains("btn") ||
-      target.classList.contains("inner-btn")
-    ) {
-      let width: any = target.dataset.width as string;
-      const float: string = target.dataset.float as string;
+    const control: HTMLElement = target.closest('.app-toolbar-control') as HTMLElement;
+    if (control) {
+      let width: any = control.dataset.width as string;
+      const float: string = control.dataset.float as string;
       const style: CSSStyleDeclaration = this.resizeTarget.style;
       if (width) {
         if (this.resizeTarget.tagName.toLowerCase() !== "iframe") {
