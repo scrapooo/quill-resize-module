@@ -3,13 +3,10 @@
   "version": "1.0.1",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",
-  "author": {
-    "email": "1002237913@qq.com",
-    "name": "王超"
-  },
+  "author": "王超 <1002237913@qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/1002237913/quill-resize-module.git"
+    "url": "git+https://github.com/1002237913/quill-resize-module.git"
   },
   "license": "MIT",
   "keywords": [
@@ -18,7 +15,6 @@
     "quill-image-resize",
     "quill-iframe-resize"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@types/ms": "^0.7.30",
     "rollup": "^1.0.0",
@@ -42,5 +38,13 @@
     "dist/*.js",
     "types/*.d.ts",
     "demo"
-  ]
+  ],
+  "description": "A module for Quill rich text editor to allow images to be resized.",
+  "bugs": {
+    "url": "https://github.com/1002237913/quill-resize-module/issues"
+  },
+  "homepage": "https://github.com/1002237913/quill-resize-module#readme",
+  "directories": {
+    "test": "test"
+  }
 }
