@@ -4,11 +4,16 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "lib": ["ES2015", "ES2016", "ES2017", "DOM"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "declaration": true,
     "declarationDir": "./types",
     "emitDeclarationOnly": true,
     "sourceMap": false
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }

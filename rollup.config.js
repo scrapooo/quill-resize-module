@@ -9,23 +9,28 @@ export default [
     output: {
       name: "QuillResizeModule",
       file: "dist/quill-resize-module.js",
-      format: "umd"
+      format: "umd",
     },
-    plugins: [resolve(), commonjs(), typescript(), less({ insert: true })]
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript(),
+      less({ insert: true, output: false }),
+    ],
   },
   {
     input: "src/main.ts",
     output: {
       name: "QuillResizeModule",
       file: "dist/quill-resize-module.min.js",
-      format: "umd"
+      format: "umd",
     },
     plugins: [
       resolve(),
       commonjs(),
       typescript(),
       uglify(),
-      less({ insert: true })
-    ]
-  }
+      less({ insert: true, output: false }),
+    ],
+  },
 ];

@@ -26,13 +26,14 @@ const quill = new Quill(editor, {
     resize: {
       locale: {
         altTip: "按住alt键比例缩放",
+        inputTip: "回车键确认",
         floatLeft: "靠左",
         floatRight: "靠右",
         center: "居中",
-        restore: "还原"
-      }
-    }
-  }
+        restore: "还原",
+      },
+    },
+  },
 });
 ```
 
@@ -74,7 +75,7 @@ const quill = new Quill(editor, {
       "underline",
       "strike",
       "image",
-      "video"
+      "video",
     ];
     var quill = new Quill("#editor", {
       theme: "snow",
@@ -82,10 +83,10 @@ const quill = new Quill(editor, {
         toolbar: toolbarOptions,
         resize: {
           locale: {
-            center: "center"
-          }
-        }
-      }
+            center: "center",
+          },
+        },
+      },
     });
   </script>
 </html>

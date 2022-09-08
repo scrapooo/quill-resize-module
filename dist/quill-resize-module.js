@@ -56,7 +56,7 @@
         return __assign.apply(this, arguments);
     };
 
-    __$styleInject("#editor-resizer {\n  position: absolute;\n  border: 1px dashed #fff;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n#editor-resizer .handler {\n  position: absolute;\n  right: -5px;\n  bottom: -5px;\n  width: 10px;\n  height: 10px;\n  border: 1px solid #333;\n  background-color: rgba(255, 255, 255, 0.8);\n  cursor: nwse-resize;\n  user-select: none;\n}\n#editor-resizer .toolbar {\n  position: absolute;\n  top: -5em;\n  left: 50%;\n  padding: 0.5em;\n  border: 1px solid #fff;\n  border-radius: 3px;\n  background-color: #fff;\n  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);\n  transform: translateX(-50%);\n}\n#editor-resizer .toolbar .group {\n  display: flex;\n  border: 1px solid #aaa;\n  border-radius: 6px;\n  overflow: hidden;\n  white-space: nowrap;\n  text-align: center;\n}\n#editor-resizer .toolbar .group:not(:first-child) {\n  margin-top: 0.5em;\n}\n#editor-resizer .toolbar .group .btn {\n  flex: 1 0 0;\n  text-align: center;\n  width: 25%;\n  padding: 0 0.5rem;\n  display: inline-block;\n  color: rgba(0, 0, 0, 0.65);\n  vertical-align: top;\n  line-height: 2;\n  user-select: none;\n}\n#editor-resizer .toolbar .group .btn.btn-group {\n  padding: 0;\n  display: inline-flex;\n  line-height: 2em;\n}\n#editor-resizer .toolbar .group .btn.btn-group .inner-btn {\n  flex: 1 0 0;\n  font-size: 2em;\n  width: 50%;\n  cursor: pointer;\n}\n#editor-resizer .toolbar .group .btn.btn-group .inner-btn:first-child {\n  border-right: 1px solid #ddd;\n}\n#editor-resizer .toolbar .group .btn.btn-group .inner-btn:active {\n  transform: scale(0.8);\n}\n#editor-resizer .toolbar .group .btn:not(:last-child) {\n  border-right: 1px solid #bbb;\n}\n#editor-resizer .toolbar .group .btn:not(.btn-group):active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n");
+    __$styleInject("#editor-resizer {\n  position: absolute;\n  border: 1px dashed #fff;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n#editor-resizer .handler {\n  position: absolute;\n  right: -5px;\n  bottom: -5px;\n  width: 10px;\n  height: 10px;\n  border: 1px solid #333;\n  background-color: rgba(255, 255, 255, 0.8);\n  cursor: nwse-resize;\n  user-select: none;\n}\n#editor-resizer .toolbar {\n  position: absolute;\n  top: -5em;\n  left: 50%;\n  padding: 0.5em;\n  border: 1px solid #fff;\n  border-radius: 3px;\n  background-color: #fff;\n  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);\n  transform: translateX(-50%);\n  width: 20em;\n}\n#editor-resizer .toolbar .group {\n  display: flex;\n  border: 1px solid #aaa;\n  border-radius: 6px;\n  white-space: nowrap;\n  text-align: center;\n  line-height: 2;\n  color: rgba(0, 0, 0, 0.65);\n}\n#editor-resizer .toolbar .group:not(:first-child) {\n  margin-top: 0.5em;\n}\n#editor-resizer .toolbar .group .btn {\n  flex: 1 0 0;\n  text-align: center;\n  width: 25%;\n  padding: 0 0.5rem;\n  display: inline-block;\n  vertical-align: top;\n  user-select: none;\n  color: inherit;\n}\n#editor-resizer .toolbar .group .btn:not(:last-child) {\n  border-right: 1px solid #bbb;\n}\n#editor-resizer .toolbar .group .btn:not(.btn-group):active {\n  background-color: rgba(0, 0, 0, 0.1);\n}\n#editor-resizer .toolbar .group .input-wrapper {\n  width: 25%;\n  border: 1px solid #eee;\n  position: relative;\n  border-right: 1px solid #bbb;\n  min-width: 4em;\n}\n#editor-resizer .toolbar .group .input-wrapper::after {\n  content: \" \";\n  position: absolute;\n  height: 1px;\n  background-color: #333;\n  left: 0.5em;\n  right: 1em;\n  bottom: 0.2em;\n}\n#editor-resizer .toolbar .group .input-wrapper input {\n  color: inherit;\n  text-align: center;\n  width: 100%;\n  border: none;\n  outline: none;\n  padding: 0 0.5em;\n  padding-right: 1.5em;\n}\n#editor-resizer .toolbar .group .input-wrapper input:focus ~ .tooltip {\n  display: block;\n}\n#editor-resizer .toolbar .group .input-wrapper .suffix {\n  position: absolute;\n  right: 0.5em;\n}\n#editor-resizer .toolbar .group .input-wrapper .tooltip {\n  display: none;\n  position: absolute;\n  bottom: 100%;\n  left: 0;\n  font-size: small;\n  background-color: #fff;\n  box-shadow: 0 0 3px #a7a7a7;\n  padding: 0 0.6em;\n  border-radius: 5px;\n  zoom: 0.85;\n}\n");
 
     var I18n = /** @class */ (function () {
         function I18n(config) {
@@ -71,11 +71,12 @@
         return I18n;
     }());
     var defaultLocale = {
-        altTip: "按住alt键比例缩放",
-        floatLeft: "靠左",
-        floatRight: "靠右",
-        center: "居中",
-        restore: "还原"
+        floatLeft: "left",
+        floatRight: "right",
+        center: "center",
+        restore: "restore",
+        altTip: "Press and hold alt to lock ratio!",
+        inputTip: "Press enter key to apply change!",
     };
 
     function format(str) {
@@ -102,7 +103,7 @@
         }
         return ResizeElement;
     }(HTMLElement));
-    var template = "\n<div class=\"handler\" title=\"{0}\"></div>\n<div class=\"toolbar\">\n  <div class=\"group\">\n    <a class=\"btn\" data-width=\"100%\">100%</a>\n    <a class=\"btn\" data-width=\"50%\">50%</a>\n    <a  class=\"btn btn-group\">\n      <span data-width=\"-5\" class=\"inner-btn\">\uFE63</span>\n      <span data-width=\"5\" class=\"inner-btn\">\uFE62</span>\n    </a>\n    <a data-width=\"auto\" class=\"btn\">{4}</a>\n  </div>\n  <div class=\"group\">\n    <a class=\"btn\" data-float=\"left\">{1}</a>\n    <a class=\"btn\" data-float=\"center\">{2}</a>\n    <a class=\"btn\" data-float=\"right\">{3}</a>\n    <a data-float=\"none\" class=\"btn\">{4}</a>\n  </div>\n</div>\n";
+    var template = "\n<div class=\"handler\" title=\"{0}\"></div>\n<div class=\"toolbar\">\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:100%\">100%</a>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:50%\">50%</a>\n    <span class=\"input-wrapper\"><input data-type=\"width\" maxlength=\"3\" /><span class=\"suffix\">%</span><span class=\"tooltip\">Press enter key to apply change!</span></span>\n    <a class=\"btn\" data-type=\"width\" data-styles=\"width:auto\">{4}</a>\n  </div>\n  <div class=\"group\">\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:left\">{1}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"display:block;margin:auto;\">{2}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"float:right;\">{3}</a>\n    <a class=\"btn\" data-type=\"align\" data-styles=\"\">{4}</a>\n  </div>\n</div>\n";
     var ResizePlugin = /** @class */ (function () {
         function ResizePlugin(resizeTarget, container, options) {
             this.resizer = null;
@@ -123,6 +124,7 @@
             this.endResize = this.endResize.bind(this);
             this.startResize = this.startResize.bind(this);
             this.toolbarClick = this.toolbarClick.bind(this);
+            this.toolbarInputChange = this.toolbarInputChange.bind(this);
             this.bindEvents();
         }
         ResizePlugin.prototype.initResizer = function () {
@@ -130,7 +132,7 @@
             if (!resizer) {
                 resizer = document.createElement("div");
                 resizer.setAttribute("id", "editor-resizer");
-                resizer.innerHTML = format(template, this.i18n.findLabel("altTip"), this.i18n.findLabel("floatLeft"), this.i18n.findLabel("center"), this.i18n.findLabel("floatRight"), this.i18n.findLabel("restore"));
+                resizer.innerHTML = format(template, this.i18n.findLabel("altTip"), this.i18n.findLabel("floatLeft"), this.i18n.findLabel("center"), this.i18n.findLabel("floatRight"), this.i18n.findLabel("restore"), this.i18n.findLabel("inputTip"));
                 this.container.appendChild(resizer);
             }
             this.resizer = resizer;
@@ -147,56 +149,38 @@
             if (this.resizer !== null) {
                 this.resizer.addEventListener("mousedown", this.startResize);
                 this.resizer.addEventListener("click", this.toolbarClick);
+                this.resizer.addEventListener("change", this.toolbarInputChange);
             }
             window.addEventListener("mouseup", this.endResize);
             window.addEventListener("mousemove", this.resizing);
         };
-        ResizePlugin.prototype.toolbarClick = function (e) {
+        ResizePlugin.prototype._setStylesForToolbar = function (type, styles) {
+            var _a;
+            var storeKey = "_styles_" + type;
+            var style = this.resizeTarget.style;
+            var originStyles = this.resizeTarget[storeKey];
+            style.cssText =
+                style.cssText.replaceAll(" ", "").replace(originStyles, "") +
+                    (";" + styles);
+            this.resizeTarget[storeKey] = styles;
+            this.positionResizerToTarget(this.resizeTarget);
+            (_a = this.options) === null || _a === void 0 ? void 0 : _a.onChange(this.resizeTarget);
+        };
+        ResizePlugin.prototype.toolbarInputChange = function (e) {
             var _a;
             var target = e.target;
-            if (target.classList.contains("btn") ||
-                target.classList.contains("inner-btn")) {
-                var width = target.dataset.width;
-                var float = target.dataset.float;
-                var style = this.resizeTarget.style;
-                if (width) {
-                    if (this.resizeTarget.tagName.toLowerCase() !== "iframe") {
-                        style.removeProperty("height");
-                    }
-                    if (width === "auto") {
-                        style.removeProperty("width");
-                    }
-                    else if (width.includes("%")) {
-                        style.setProperty("width", width);
-                    }
-                    else {
-                        var styleWidth = style.getPropertyValue("width");
-                        width = parseInt(width);
-                        if (styleWidth.includes("%")) {
-                            styleWidth =
-                                Math.min(Math.max(parseInt(styleWidth) + width, 5), 100) + "%";
-                        }
-                        else {
-                            styleWidth =
-                                Math.max(this.resizeTarget.clientWidth + width, 10) + "px";
-                        }
-                        style.setProperty("width", styleWidth);
-                    }
-                }
-                else {
-                    if (float === "center") {
-                        style.setProperty("display", "block");
-                        style.setProperty("margin", "auto");
-                        style.removeProperty("float");
-                    }
-                    else {
-                        style.removeProperty("display");
-                        style.removeProperty("margin");
-                        style.setProperty("float", float);
-                    }
-                }
-                this.positionResizerToTarget(this.resizeTarget);
-                (_a = this.options) === null || _a === void 0 ? void 0 : _a.onChange(this.resizeTarget);
+            var type = (_a = target === null || target === void 0 ? void 0 : target.dataset) === null || _a === void 0 ? void 0 : _a.type;
+            var value = target.value;
+            if (type && Number(value)) {
+                this._setStylesForToolbar(type, "width: " + Number(value) + "%;");
+            }
+        };
+        ResizePlugin.prototype.toolbarClick = function (e) {
+            var _a, _b;
+            var target = e.target;
+            var type = (_a = target === null || target === void 0 ? void 0 : target.dataset) === null || _a === void 0 ? void 0 : _a.type;
+            if (type && target.classList.contains("btn")) {
+                this._setStylesForToolbar(type, (_b = target === null || target === void 0 ? void 0 : target.dataset) === null || _b === void 0 ? void 0 : _b.styles);
             }
         };
         ResizePlugin.prototype.startResize = function (e) {

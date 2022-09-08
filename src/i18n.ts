@@ -4,6 +4,7 @@ class Locale {
   floatRight?: string;
   center?: string;
   restore?: string;
+  inputTip?: string;
 }
 class I18n {
   config: Locale;
@@ -19,10 +20,11 @@ class I18n {
 }
 
 const defaultLocale: Locale = {
-  altTip: "按住alt键比例缩放",
-  floatLeft: "靠左",
-  floatRight: "靠右",
-  center: "居中",
-  restore: "还原"
+  floatLeft: "left",
+  floatRight: "right",
+  center: "center",
+  restore: "restore",
+  altTip: "Press and hold alt to lock ratio!",
+  inputTip: "Press enter key to apply change!",
 };
 export { I18n, Locale, defaultLocale };
