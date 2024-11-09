@@ -1,6 +1,6 @@
 {
   "name": "@ssumo/quill-resize-module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",
   "author": {
@@ -10,6 +10,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/scrapooo/quill-resize-module.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "license": "MIT",
   "keywords": [
