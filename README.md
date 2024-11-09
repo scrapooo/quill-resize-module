@@ -9,6 +9,15 @@ a module that enables resize for image/iframe/video.
 
 ![image](https://raw.githubusercontent.com/scrapooo/quill-resize-module/master/demo/demo.gif)
 
+## changelog
+
+### v1.0.3
+
+bugfix
+
+- fixed width of the toolbar does not adjust to accommodate text in different languages
+- fixed inputTip locale text is ignored
+
 ## Usage
 
 ### Webpack/ES6
