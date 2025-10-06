@@ -1,6 +1,6 @@
 {
   "name": "@ssumo/quill-resize-module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",
   "author": {
