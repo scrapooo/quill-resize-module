@@ -21,6 +21,12 @@
     "quill-image-resize",
     "quill-iframe-resize"
   ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepublishOnly": "yarn build",
+    "release": "standard-version --no-verify"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/ms": "^0.7.30",
@@ -30,14 +36,10 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-typescript": "^1.0.0",
     "rollup-plugin-uglify": "^6.0.4",
+    "standard-version": "^9.5.0",
     "ts-node": "^7.0.1",
     "tslib": "^1.9.3",
     "typescript": "^3.2.2"
-  },
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "prepublishOnly": "yarn build"
   },
   "files": [
     "dist",
