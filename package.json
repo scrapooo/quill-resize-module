@@ -40,9 +40,9 @@
     "prepublishOnly": "yarn build"
   },
   "files": [
-    "src",
-    "dist/*.js",
-    "types/*.d.ts",
-    "demo"
+    "dist",
+    "types",
+    "demo",
+    "CHANGELOG.md"
   ]
 }
