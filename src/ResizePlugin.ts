@@ -1,6 +1,6 @@
 import "./ResizePlugin.less";
 import { I18n, Locale, defaultLocale } from "./i18n";
-import { format } from "./utils";
+import { format, getScrollParent } from "./utils";
 
 interface Size {
   width: number;
@@ -94,8 +94,17 @@ class ResizePlugin {
   }
   positionResizerToTarget(el: HTMLElement) {
     if (this.resizer !== null) {
-      this.resizer.style.setProperty("left", el.offsetLeft + "px");
-      this.resizer.style.setProperty("top", el.offsetTop + "px");
+      const containerRect = this.container.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      this.resizer.style.setProperty(
+        "left",
+        elRect.left - containerRect.left + "px"
+      );
+      this.resizer.style.setProperty(
+        "top",
+        elRect.top - containerRect.top + "px"
+      );
+
       this.resizer.style.setProperty("width", el.clientWidth + "px");
       this.resizer.style.setProperty("height", el.clientHeight + "px");
     }
@@ -108,6 +117,10 @@ class ResizePlugin {
     }
     window.addEventListener("mouseup", this.endResize);
     window.addEventListener("mousemove", this.resizing);
+
+    getScrollParent(this.resizeTarget)?.addEventListener("scroll", () => {
+      this.positionResizerToTarget(this.resizeTarget);
+    });
   }
   _setStylesForToolbar(type: string, styles: string | undefined) {
     const storeKey = `_styles_${type}`;
