@@ -28,7 +28,7 @@ const template = `
     <a class="btn" data-type="width" data-styles="width:100%">100%</a>
     <a class="btn" data-type="width" data-styles="width:50%">50%</a>
     <span class="input-wrapper"><input data-type="width" maxlength="3" /><span class="suffix">%</span><span class="tooltip">{5}</span></span>
-    <a class="btn" data-type="width" data-styles="width:auto">{4}</a>
+    <a class="btn" data-type="width" data-styles="width:auto; height:auto;">{4}</a>
   </div>
   <div class="group">
     <a class="btn" data-type="align" data-styles="float:left">{1}</a>
