@@ -1,6 +1,6 @@
 {
   "name": "@ssumo/quill-resize-module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/quill-resize-module.js",
   "typings": "types/main.d.ts",
   "author": {
@@ -37,8 +37,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "ts-node test/test.ts",
-    "pretest": "npm run build"
+    "prepublishOnly": "yarn build"
   },
   "files": [
     "src",
