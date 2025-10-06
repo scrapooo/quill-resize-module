@@ -282,7 +282,9 @@
         }
         container.addEventListener("click", function (e) {
             var target = e.target;
-            if (e.target && ["img", "video"].includes(target.tagName.toLowerCase())) {
+            if (e.target &&
+                quill.root.isContentEditable &&
+                ["img", "video"].includes(target.tagName.toLowerCase())) {
                 resizeTarge = target;
                 resizePlugin = new ResizePlugin(target, container.parentElement, __assign(__assign({}, options), { onChange: triggerTextChange }));
             }
